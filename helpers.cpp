@@ -24,7 +24,7 @@ using namespace std;
 */
 vector< vector<float> > normalize(vector< vector <float> > grid) {
 	
-	vector< vector<float> > newGrid;
+	vector < vector <float> > newGrid(grid.size(), vector<float>(grid[0].size()));
 
     float total = 0;
     for(int i =0; i<grid.size(); i++){
