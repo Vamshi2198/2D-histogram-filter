@@ -203,3 +203,34 @@ vector < vector <char> > read_map(string file_name) {
 	}
 	return map;
 }
+
+/**
+    Creates a grid of zeros
+
+    For example:
+
+    zeros(2, 3) would return
+
+    0.0  0.0  0.0
+    0.0  0.0  0.0
+
+    @param height - the height of the desired grid
+
+    @param width - the width of the desired grid.
+
+    @return a grid of zeros (floats)
+*/
+vector < vector <float> > zeros(int height, int width) {
+	int i, j;
+	vector < vector <float> > newGrid;
+	vector <float> newRow;
+
+	for (i=0; i<height; i++) {
+		newRow.clear();
+		for (j=0; j<width; j++) {
+			newRow.push_back(0.0);
+		}
+		newGrid.push_back(newRow);
+	}
+	return newGrid;
+}
