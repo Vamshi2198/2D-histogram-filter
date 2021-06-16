@@ -88,17 +88,17 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
                                       {corner_prob, adjacent_prob, corner_prob}};
     
   
-  vector < vector <float> > grid_val;
+  float grid_val;
   int new_i;
   int new_j;
   for(int i =0; i<height; i++){
      for(int j =0; j<width; j++){
-       grid_val[i][j] = grid[i][j];
+       grid_val= grid[i][j];
        for(int dx = -1; dx<window.size(); dx++){
           for(int dy = -1; dy<window[0].size(); dy++){
             new_i = (i + dy) % height;
             new_j = (j + dx) % width;
-            newGrid[new_i][new_j] += window[dx+1][dy+1] * grid_val[i][j];
+            newGrid[new_i][new_j] += window[dx+1][dy+1] * grid_val;
           }
        }            
      }
