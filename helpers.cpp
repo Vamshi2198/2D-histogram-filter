@@ -178,3 +178,28 @@ vector <char> read_line(string s) {
 
 	return row;
 }
+
+/**
+    Helper function for reading in map data
+
+    @param file_name - The filename where the map is stored.
+
+    @return - A grid of chars representing a map.
+*/
+vector < vector <char> > read_map(string file_name) {
+	ifstream infile(file_name);
+	vector < vector <char> > map;
+	if (infile.is_open()) {
+
+		char color;
+		vector <char> row;
+		
+		string line;
+
+		while (std::getline(infile, line)) {
+			row = read_line(line);
+			map.push_back(row);
+		}
+	}
+	return map;
+}
