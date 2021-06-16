@@ -151,3 +151,30 @@ bool close_enough(float v1, float v2) {
 	} 
 	return true;
 }
+
+/**
+    Helper function for reading in map data
+
+    @param s - a string representing one line of map data.
+
+    @return - A row of chars, each of which represents the
+    color of a cell in a grid world.
+*/
+vector <char> read_line(string s) {
+	vector <char> row;
+
+	size_t pos = 0;
+	string token;
+	string delimiter = " ";
+	char cell;
+
+	while ((pos = s.find(delimiter)) != std::string::npos) {
+		token = s.substr(0, pos);
+		s.erase(0, pos + delimiter.length());
+
+		cell = token.at(0);
+		row.push_back(cell);
+	}
+
+	return row;
+}
