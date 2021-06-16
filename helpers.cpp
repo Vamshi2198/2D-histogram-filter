@@ -138,7 +138,7 @@ bool close_enough(vector < vector <float> > g1, vector < vector <float> > g2) {
 		for (j=0; j<g1[0].size(); j++) {
 			v1 = g1[i][j];
 			v2 = g2[i][j];
-			if (abs(v2-v1) > 0.0001 ) {
+			if (abs(v2-v1) > 0.0001 || isnan(v2-v1) ) {
 				return false;
 			}
 		}
