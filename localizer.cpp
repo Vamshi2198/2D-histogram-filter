@@ -105,3 +105,68 @@ vector< vector <float> > move(int dy, int dx,
 
   return blur(newGrid, blurring);
 }
+
+/**Implements robot sensing by updating beliefs based on the 
+    color of a sensor measurement 
+
+	@param color - the color the robot has sensed at its location
+
+	@param grid - the current map of the world, stored as a grid
+		   (vector of vectors of chars) where each char represents a 
+		   color. For example:
+
+		   g g g
+    	   g r g
+    	   g g g
+
+   	@param beliefs - a two dimensional grid of floats representing
+   		   the robot's beliefs for each cell before sensing. For 
+   		   example, a robot which has almost certainly localized 
+   		   itself in a 2D world might have the following beliefs:
+
+   		   0.01 0.98
+   		   0.00 0.01
+
+    @param p_hit - the RELATIVE probability that any "sense" is 
+    	   correct. The ratio of p_hit / p_miss indicates how many
+    	   times MORE likely it is to have a correct "sense" than
+    	   an incorrect one.
+
+   	@param p_miss - the RELATIVE probability that any "sense" is 
+    	   incorrect. The ratio of p_hit / p_miss indicates how many
+    	   times MORE likely it is to have a correct "sense" than
+    	   an incorrect one.
+
+    @return - a normalized two dimensional grid of floats 
+    	   representing the updated beliefs for the robot. 
+*/
+vector< vector <float> > sense(char color, 
+	vector< vector <char> > grid, 
+	vector< vector <float> > beliefs, 
+	float p_hit,
+	float p_miss) 
+{
+	vector< vector <float> > newGrid;
+	vector<float> row;
+    float belief;
+
+    int height = beliefs.size();
+    int width = beliefs[0].size();
+    
+    for(int j=0; j<height; j++){
+      row.clear();
+      for(int i=0; i<width; i++){
+          belief = beliefs[j][i];
+            if (color == grid[j][i]) {
+                row.push_back(belief * p_hit);
+            }
+            else {
+                row.push_back(belief * p_miss);
+            }
+      }
+        newGrid.push_back(row);
+    }
+        
+
+	return normalize(newGrid);
+}
