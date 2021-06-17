@@ -97,8 +97,8 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
        grid_val= grid[i][j];
        for(int dx = -1; dx<2; dx++){
           for(int dy = -1; dy<2; dy++){
-            new_i = (i + dy) % height;
-            new_j = (j + dx) % width;
+            new_i = ((i + dy) % height + height) % height;
+            new_j = ((j + dx) % width + width) % width;
             newGrid[new_i][new_j] += window[dx+1][dy+1] * grid_val;
           }
        }            
