@@ -8,6 +8,11 @@ The Purpose of the project is to implement a 2-dimensional histogram filter for 
 ## Instructions to run the project
 1. Clone this repository using `git clone https://github.com/Vamshi2198/2D-histogram-filter`.
 2. Open the repository as a complete folder in VS Code.
+3. Open the terminal and compile the code
+   `g++ debugging_helpers.cpp helpers.cpp localizer.cpp tests.cpp`.
+4. Run the code 
+   `./a.exe`
+
 
 
 ## Project files
